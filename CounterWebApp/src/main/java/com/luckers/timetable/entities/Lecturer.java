@@ -2,13 +2,11 @@ package com.luckers.timetable.entities;
 
 import com.luckers.timetable.staticinfo.StaticInfo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * Created by ihor on 27.04.2015.
@@ -94,6 +92,14 @@ public class Lecturer {
         this.degree = degree;
     }
 
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
     @Override
     public String toString() {
         return "Lector [id=" + id + ", firstName=" + firstName + ", lastName="
@@ -111,4 +117,6 @@ public class Lecturer {
 
     @Size(min = StaticInfo.LECTOR_LAST_DEGREE_VALUE, max = StaticInfo.LECTOR_DEGREE_MAX_VALUE)
     private String degree;
+    @OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "lecturer")
+    private List<Group> groups;
 }
