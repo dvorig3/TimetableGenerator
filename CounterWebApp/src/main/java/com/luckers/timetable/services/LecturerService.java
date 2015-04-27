@@ -8,5 +8,5 @@ import com.luckers.timetable.entities.Lecturer;
 public interface LecturerService {
     public void addLecturer(Lecturer lecturer);
     public void updateLecturer(Lecturer lecturer);
-    public void findLecturer(int lecturer_id);
+    public Lecturer findLecturer(int lecturer_id);
 }

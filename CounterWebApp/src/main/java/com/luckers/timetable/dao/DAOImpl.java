@@ -20,46 +20,46 @@ public class DAOImpl implements DAO {
 
     @Override
     public void insertGroup(Group group) {
-
+           entityManager.persist(group);
     }
 
     @Override
     public void updateGroup(Group group) {
-
+        entityManager.merge(group);
     }
 
     @Override
     public Group selectGroupById(int groupId) {
-        return null;
+        return entityManager.find(Group.class,groupId);
     }
 
     @Override
     public void insertLecturer(Lecturer lecturer) {
-
+            entityManager.persist(lecturer);
     }
 
     @Override
     public void updateLecturer(Lecturer lecturer) {
-
+        entityManager.merge(lecturer);
     }
 
     @Override
     public Lecturer selectLecturerById(int lecturerId) {
-        return null;
+        return entityManager.find(Lecturer.class,lecturerId);
     }
 
     @Override
     public void insertSubject(Subject subject) {
-
+          entityManager.persist(subject);
     }
 
     @Override
     public void updateSubject(Subject subject) {
-
+        entityManager.merge(subject);
     }
 
     @Override
     public Subject selectSubjectById(int subjectId) {
-        return null;
+        return entityManager.find(Subject.class,subjectId);
     }
 }
