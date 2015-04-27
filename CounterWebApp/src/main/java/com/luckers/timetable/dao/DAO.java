@@ -1,8 +1,6 @@
 package com.luckers.timetable.dao;
 
-import com.luckers.timetable.entities.Group;
-import com.luckers.timetable.entities.Lecturer;
-import com.luckers.timetable.entities.Subject;
+import com.luckers.timetable.entities.*;
 
 /**
  * Created by ihor on 27.04.2015.
@@ -20,4 +18,13 @@ public interface DAO {
     public void insertSubject(Subject subject);
     public void updateSubject(Subject subject);
     public Subject selectSubjectById(int subjectId);
+
+    public void insertWeek(Week week);
+    public Week selectWeekById(int id);
+
+    public void addClassroom(Classroom classroom);
+    public void updateClassroom(Classroom classroom);
+    public Classroom selectClassroomById(int id);
+
+
 }
