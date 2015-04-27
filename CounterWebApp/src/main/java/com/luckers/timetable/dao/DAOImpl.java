@@ -4,6 +4,7 @@ import com.luckers.timetable.entities.Group;
 import com.luckers.timetable.entities.Lecturer;
 import com.luckers.timetable.entities.Subject;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +13,7 @@ import javax.persistence.PersistenceContext;
  * Created by ihor on 27.04.2015.
  */
 @Repository
+@Transactional
 public class DAOImpl implements DAO {
     @PersistenceContext
     private EntityManager entityManager;
