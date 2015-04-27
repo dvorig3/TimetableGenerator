@@ -1,11 +1,10 @@
 package com.luckers.timetable.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -49,5 +48,6 @@ public class Week {
     @NotNull
     private java.util.Date dateStart;
 
-
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "classroom")
+    private List<Timetable> timetables;
 }

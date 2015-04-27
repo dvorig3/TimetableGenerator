@@ -1,8 +1,11 @@
 package com.luckers.timetable.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +24,9 @@ public class Classroom {
     private int classroom;
     @Min(value=1)
     private int spaciousness;
+
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "week")
+    private List<Timetable> timetables;
 
 
     public Classroom(int id, int building, int classroom, int spaciousness) {
