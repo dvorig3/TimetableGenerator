@@ -30,6 +30,9 @@ public class Lecturer {
         this.degree = degree;
     }
 
+    public Lecturer() {
+    }
+
     /**
      * @return the id
      */
@@ -106,6 +109,7 @@ public class Lecturer {
                 + lastName + ", degree=" + degree + "]";
     }
 
+    @Id @GeneratedValue
     @Min(value = StaticInfo.LECTOR_ID_MIN_VALUE)
     private int id;
 
@@ -117,6 +121,7 @@ public class Lecturer {
 
     @Size(min = StaticInfo.LECTOR_LAST_DEGREE_VALUE, max = StaticInfo.LECTOR_DEGREE_MAX_VALUE)
     private String degree;
+
     @OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "lecturer")
     private List<Group> groups;
 }

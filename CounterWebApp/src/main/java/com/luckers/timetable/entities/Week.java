@@ -1,5 +1,6 @@
 package com.luckers.timetable.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
@@ -13,6 +14,7 @@ import java.util.Date;
  * Time: 11:58
  * To change this template use File | Settings | File Templates.
  */
+@Entity
 public class Week {
     public int getId() {
         return id;
