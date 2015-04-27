@@ -1,5 +1,7 @@
 package com.luckers.timetable.entities;
 
+import com.googlecode.ehcache.annotations.Cacheable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +16,8 @@ import java.util.List;
  * Time: 11:44
  * To change this template use File | Settings | File Templates.
  */
+
+
 public class Classroom {
     @Id @GeneratedValue
     @Min(value=0)
@@ -74,5 +78,40 @@ public class Classroom {
 
     public void setClassroom(int classroom) {
         this.classroom = classroom;
+    }
+
+    public List<Timetable> getTimetables() {
+        return timetables;
+    }
+
+    public void setTimetables(List<Timetable> timetables) {
+        this.timetables = timetables;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Classroom classroom1 = (Classroom) o;
+
+        if (building != classroom1.building) return false;
+        if (classroom != classroom1.classroom) return false;
+        if (id != classroom1.id) return false;
+        if (spaciousness != classroom1.spaciousness) return false;
+        if (timetables != null ? !timetables.equals(classroom1.timetables) : classroom1.timetables != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + building;
+        result = 31 * result + classroom;
+        result = 31 * result + spaciousness;
+        result = 31 * result + (timetables != null ? timetables.hashCode() : 0);
+        return result;
     }
 }

@@ -1,5 +1,6 @@
 package com.luckers.timetable.dao;
 
+import com.googlecode.ehcache.annotations.Cacheable;
 import com.luckers.timetable.entities.Group;
 import com.luckers.timetable.entities.Lecturer;
 import com.luckers.timetable.entities.Subject;
@@ -28,6 +29,7 @@ public class DAOImpl implements DAO {
         entityManager.merge(group);
     }
 
+    @Cacheable(cacheName = "groupCache")
     @Override
     public Group selectGroupById(int groupId) {
         return entityManager.find(Group.class,groupId);
@@ -42,7 +44,7 @@ public class DAOImpl implements DAO {
     public void updateLecturer(Lecturer lecturer) {
         entityManager.merge(lecturer);
     }
-
+    @Cacheable(cacheName = "lecturersCache")
     @Override
     public Lecturer selectLecturerById(int lecturerId) {
         return entityManager.find(Lecturer.class,lecturerId);
@@ -57,7 +59,7 @@ public class DAOImpl implements DAO {
     public void updateSubject(Subject subject) {
         entityManager.merge(subject);
     }
-
+    @Cacheable(cacheName = "subjectCache")
     @Override
     public Subject selectSubjectById(int subjectId) {
         return entityManager.find(Subject.class,subjectId);
