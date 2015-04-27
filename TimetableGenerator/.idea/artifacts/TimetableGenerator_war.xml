@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="TimetableGenerator:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="TimetableGenerator.war">
-      <element id="artifact" artifact-name="TimetableGenerator:war exploded" />
-    </root>
-  </artifact>
-</component>
