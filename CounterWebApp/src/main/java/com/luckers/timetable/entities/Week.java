@@ -71,4 +71,37 @@ public class Week {
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "classroom")
     private List<Timetable> timetables;
+
+    public List<Timetable> getTimetables() {
+        return timetables;
+    }
+
+    public void setTimetables(List<Timetable> timetables) {
+        this.timetables = timetables;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Week week = (Week) o;
+
+        if (id != week.id) return false;
+        if (number != week.number) return false;
+        if (dateStart != null ? !dateStart.equals(week.dateStart) : week.dateStart != null) return false;
+        if (timetables != null ? !timetables.equals(week.timetables) : week.timetables != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + number;
+        result = 31 * result + (dateStart != null ? dateStart.hashCode() : 0);
+        result = 31 * result + (timetables != null ? timetables.hashCode() : 0);
+        return result;
+    }
 }

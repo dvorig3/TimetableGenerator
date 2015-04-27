@@ -2,64 +2,71 @@ package com.luckers.timetable.dao;
 
 import com.luckers.timetable.entities.*;
 import org.hibernate.dialect.MySQL5Dialect;
+
+import com.googlecode.ehcache.annotations.Cacheable;
+import com.luckers.timetable.entities.Group;
+import com.luckers.timetable.entities.Lecturer;
+import com.luckers.timetable.entities.Subject;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.sql.Date;
 
 /**
  * Created by ihor on 27.04.2015.
  */
 @Repository
+@Transactional
 public class DAOImpl implements DAO {
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     public void insertGroup(Group group) {
-
+           entityManager.persist(group);
     }
 
     @Override
     public void updateGroup(Group group) {
-
+        entityManager.merge(group);
     }
 
+    @Cacheable(cacheName = "groupCache")
     @Override
     public Group selectGroupById(int groupId) {
-        return null;
+        return entityManager.find(Group.class,groupId);
     }
 
     @Override
     public void insertLecturer(Lecturer lecturer) {
-
+            entityManager.persist(lecturer);
     }
 
     @Override
     public void updateLecturer(Lecturer lecturer) {
-
+        entityManager.merge(lecturer);
     }
-
+    @Cacheable(cacheName = "lecturersCache")
     @Override
     public Lecturer selectLecturerById(int lecturerId) {
-        return null;
+        return entityManager.find(Lecturer.class,lecturerId);
     }
 
     @Override
     public void insertSubject(Subject subject) {
-
+          entityManager.persist(subject);
     }
 
     @Override
     public void updateSubject(Subject subject) {
-
+        entityManager.merge(subject);
     }
-
+    @Cacheable(cacheName = "subjectCache")
     @Override
     public Subject selectSubjectById(int subjectId) {
-        return null;
+        return entityManager.find(Subject.class,subjectId);
     }
 
     @Override
@@ -80,7 +87,7 @@ public class DAOImpl implements DAO {
 
     @Override
     public void updateClassroom(Classroom classroom) {
-        entityManager.refresh(classroom);
+        entityManager.merge(classroom);
     }
 
     @Override

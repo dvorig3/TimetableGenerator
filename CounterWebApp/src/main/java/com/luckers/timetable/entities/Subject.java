@@ -55,4 +55,29 @@ public class Subject {
     public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Subject subject = (Subject) o;
+
+        if (groups != null ? !groups.equals(subject.groups) : subject.groups != null) return false;
+        if (hours != null ? !hours.equals(subject.hours) : subject.hours != null) return false;
+        if (id != null ? !id.equals(subject.id) : subject.id != null) return false;
+        if (name != null ? !name.equals(subject.name) : subject.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (hours != null ? hours.hashCode() : 0);
+        result = 31 * result + (groups != null ? groups.hashCode() : 0);
+        return result;
+    }
 }
