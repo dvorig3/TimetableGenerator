@@ -9,24 +9,91 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring-version>3.0.5.RELEASE</spring-version>
+		<spring-group-id>org.springframework</spring-group-id>
+		<aspectJ-id>org.aspectj</aspectJ-id>
+		<aspectJ-ver>1.8.5</aspectJ-ver>
 	</properties>
 
 	<dependencies>
 
+
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework</groupId>
+			<groupId>${spring-group-id}</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${spring-group-id}</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${spring-group-id}</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${spring-group-id}</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring-version}</version>
 		</dependency>
 
+		<!--aop-->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>${spring-group-id}</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${aspectJ-id}</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectJ-ver}</version>
+		</dependency>
+		<dependency>
+			<groupId>${aspectJ-id}</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectJ-ver}</version>
+		</dependency>
 
+		<!--connection pool-->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<!--hibernate-->
+		<dependency>
+			<groupId>${spring-group-id}</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.2.11.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.0.1.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.5.6-Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
